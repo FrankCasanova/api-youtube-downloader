@@ -1,15 +1,13 @@
 from pytube import YouTube
 
 
-def download_audio(url: str):
+def download_audio_yt(url: str):
     try:
         yt = YouTube(url)
-        stream = yt.streams.filter(
-            only_audio=True).first()
+        stream = yt.streams.filter(only_audio=True).first()
 
         file = stream.download(
-            skip_existing=True,
-            filename_prefix="FRNKCSNV_",
+            skip_existing=True, filename_prefix="FRNKCSNV_", filename=f"{yt.title}.mp3"
         )
 
         return file
