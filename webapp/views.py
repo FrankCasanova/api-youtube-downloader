@@ -23,3 +23,7 @@ def downloader_app(request: Request, url: str = Form(...)):
     else:
         msg = "Please enter a valid youtube url"
         return templates.TemplateResponse("msg.html", {"request": request, "msg": msg})
+
+
+def error(request: Request):
+    return templates.TemplateResponse("error.html", {"request": request})
