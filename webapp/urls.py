@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 from fastapi import status
-from fastapi.templating import Jinja2Templates
 
 from .views import downloader_app
 from .views import error

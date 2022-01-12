@@ -1,5 +1,3 @@
-from os import path
-
 from fastapi.responses import RedirectResponse
 from pytube import YouTube
 
@@ -22,5 +20,7 @@ def download_audio_yt(url: str):
     except Exception as e:
         print(e)
         return RedirectResponse(
-            url="/error", status_code=302, headers={"Location": msg}
+            url="/error",
+            status_code=302,
+            headers={"Location": "Please enter a valid youtube url"},
         )

@@ -1,4 +1,3 @@
-from fastapi import File
 from fastapi import Form
 from fastapi import Request
 from fastapi.templating import Jinja2Templates
