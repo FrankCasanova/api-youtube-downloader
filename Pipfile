@@ -8,6 +8,7 @@ fastapi = {extras = ["all"], version = "*"}
 moviepy = "*"
 pre-commit = "*"
 pytube = "==12"
+gunicorn = "*"
 
 [dev-packages]
 autopep8 = "*"
