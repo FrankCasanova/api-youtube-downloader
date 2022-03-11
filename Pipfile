@@ -5,9 +5,9 @@ name = "pypi"
 
 [packages]
 fastapi = {extras = ["all"], version = "*"}
-pytube = "*"
 moviepy = "*"
 pre-commit = "*"
+pytube = "==12"
 
 [dev-packages]
 autopep8 = "*"
