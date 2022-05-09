@@ -7,12 +7,10 @@ name = "pypi"
 fastapi = {extras = ["all"], version = "*"}
 moviepy = "*"
 pre-commit = "*"
-pytube = "==12"
 gunicorn = "*"
+pytube = "*"
+pytubemp3 = "*"
 
 [dev-packages]
 autopep8 = "*"
 ipykernel = "*"
-
-[requires]
-python_version = "3.8"
