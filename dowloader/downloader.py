@@ -1,4 +1,3 @@
-
 from pytube import YouTube
 
 
@@ -6,7 +5,7 @@ def download_audio_yt(url: str):
     try:
         yt = YouTube(url)
 
-        stream = yt.streams.get_audio_only('mp4')
+        stream = yt.streams.filter(file_extension="mp4", res="360p").first()
 
         file = stream.download(
             skip_existing=True,
@@ -16,5 +15,5 @@ def download_audio_yt(url: str):
 
         return file
 
-    except Exception as e:
-        return 'unafortunately, an error has occured, try again later'
+    except Exception:
+        return "unafortunately, an error has occured, try again later"

@@ -1,5 +1,4 @@
 from multiprocessing import Process
-import os
 
 from fastapi import Form
 from fastapi import Request
@@ -7,6 +6,7 @@ from fastapi.responses import FileResponse
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
+from .conversor import convert_to_mp3
 from cleaner import cleaner
 
 templates = Jinja2Templates(directory="templates")
@@ -18,18 +18,14 @@ async def download_audio_view(request: Request, url: str = Form(...)) -> FileRes
 
     file = download_audio_yt(url)
 
-    if 'unafortunately' in file:
-        return RedirectResponse(
-            url="/error", status_code=302
-        )
-
-    base, ext = os.path.splitext(file)
-    new_file = base + '.mp3'
-    os.rename(file, new_file)
+    if "unafortunately" in file:
+        return RedirectResponse(url="/error", status_code=302)
 
     Process(target=cleaner).start()
 
-    return FileResponse(new_file, media_type='audio/*', filename=f"{file}")
+    mp3 = convert_to_mp3(file, file.replace(".mp4", ".mp3"))
+
+    return FileResponse(mp3, media_type="audio/*", filename=f"{file}")
 
     # msg: str = "Please enter a valid youtube url"
     # return RedirectResponse(
