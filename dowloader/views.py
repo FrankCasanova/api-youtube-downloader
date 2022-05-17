@@ -25,7 +25,9 @@ async def download_audio_view(request: Request, url: str = Form(...)) -> FileRes
 
     mp3 = convert_to_mp3(file, file.replace(".mp4", ".mp3"))
 
-    return FileResponse(mp3, media_type="audio/*", filename=f"{file}")
+    return FileResponse(
+        mp3, media_type="audio/MPEG-1", filename=f"{mp3.split('/')[-1]}"
+    )
 
     # msg: str = "Please enter a valid youtube url"
     # return RedirectResponse(
